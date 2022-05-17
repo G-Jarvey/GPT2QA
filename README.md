@@ -45,7 +45,7 @@ transformer==4.18.0
 本实验采用多轮对话数据的输入，使用了公开的[对话语料](https://github.com/codemayq/chinese_chatbot_corpus)以及其他一些公开的数据集（如[千言](https://www.luge.ai/#/)提供的一些），读者可自行编写脚本进行数据的清洗筛选工作，最后应当生成如下形式的数据：
 
 
-'''
+```
 喂，吉姆，晚饭后去喝点啤酒怎么样？
 你知道这很诱人，但对我们的健康真的不好。
 什么意思?它会帮助我们放松。
@@ -69,7 +69,7 @@ transformer==4.18.0
 有什么不同？
 收音机里的新闻太多了。
 没错，但是你必须买一台电唱机。
-'''
+```
 
 
 不同角色对话换行区分，不同批次对话空行区分，然后存储到txt文件中，修改pocess_data.py的相应路径并运行生成对应的pkl文件，同时输出对话长度的均值、中位、最大等参数，以供训练调参，pkl中的数据已经过BertTokenizerFast的编码，不同句子以[sep]隔开。这里给出本次实验可能使用到的一些[数据集，提取码：m9t2](https://pan.baidu.com/s/1vATZN4_SAnQTMnelFLiqhQ) 。
@@ -79,16 +79,16 @@ transformer==4.18.0
 ![image](https://user-images.githubusercontent.com/74944178/168749606-fde0391c-7993-4b50-a493-197c9fb3a1b3.png)
 模型的对应输入格式为
 
-'''
+```
 [CLS]sentence1[SEP]sentence2[SEP]sentence3[SEP]sentence4[SEP]
-'''
+```
 
 每轮对话输入到模型中进行自回归训练，能够实现生成文本的功能。
 修改train.py内的参数，如batch_size、epochs、device等后直接运行，或在终端输入如下形式命令开启训练
 
-'''
+```
 python train.py --device 0,1 --max_len 300 --epochs 50
-'''
+```
 
 ### 用户交互
 本实验共提供两种交互模型，终端+web，其中终端交互修改interact.py文件中加载的模型路径以及生成回复的参数等后直接运行即可，exit为终止符。
