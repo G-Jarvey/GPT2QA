@@ -76,7 +76,12 @@ transformer==4.18.0
 
 ### 模型训练
 模型使用了GPT2模型，架构如下：
+
+
 ![image](https://user-images.githubusercontent.com/74944178/168749606-fde0391c-7993-4b50-a493-197c9fb3a1b3.png)
+
+
+
 模型的对应输入格式为
 
 ```
